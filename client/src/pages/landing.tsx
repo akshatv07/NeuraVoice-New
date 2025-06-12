@@ -88,7 +88,7 @@ export default function Landing() {
   }, []);
 
   const handleLogin = () => {
-    window.location.href = "/api/login";
+    setLocation("/auth");
   };
 
   const handleDashboard = () => {
@@ -709,7 +709,7 @@ export default function Landing() {
                   { text: "Community Support", available: true },
                   { text: "Emotion-aware Conversations", available: true },
                   { text: "API & Webhook Access", available: false }, // Cut off in free plan
-                  { text: "Slot Filling", available: true },
+                  { text: "Slot Filling", available: false },
                   { text: "Bot Retraining allowed (1)", available: true },
                   { text: "Hallucination Prevention", available: true },
                   { text: "Ethical Guardrails", available: true }
