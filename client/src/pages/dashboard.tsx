@@ -34,10 +34,15 @@ import {
   Sparkles,
   CheckCircle,
   Lightbulb,
+<<<<<<< HEAD
   Edit,
   MessageSquare
 } from "lucide-react";
 import { FloatingAIChatButton } from "@/components/FloatingAIChatButton";
+=======
+  Edit
+} from "lucide-react";
+>>>>>>> origin/main
 // Using img tag directly for Vite compatibility
 
 export default function Dashboard() {
@@ -71,8 +76,12 @@ export default function Dashboard() {
   const [guardrails, setGuardrails] = useState({
     avoidProfanity: false,
     stickToInfo: false,
+<<<<<<< HEAD
     politeTone: false,
     slotFilling: false
+=======
+    politeTone: false
+>>>>>>> origin/main
   });
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -484,6 +493,7 @@ export default function Dashboard() {
                 Strategy & Behavior
               </Label>
               <div className="space-y-2">
+<<<<<<< HEAD
                 <div className="flex flex-wrap gap-6 mb-4">
                   <div className="flex items-center space-x-2 flex-1 min-w-[200px]">
                     <Checkbox 
@@ -520,6 +530,35 @@ export default function Dashboard() {
                       onCheckedChange={() => handleGuardrailChange('slotFilling')}
                     />
                     <Label htmlFor="slot-filling" className="text-sm font-normal text-gray-300 whitespace-nowrap">Slot Filling</Label>
+=======
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                  <div className="flex items-center space-x-2">
+                    <Checkbox 
+                      id="no-profanity" 
+                      className="border-white/30 data-[state=checked]:bg-primary" 
+                      checked={guardrails.avoidProfanity}
+                      onCheckedChange={() => handleGuardrailChange('avoidProfanity')}
+                    />
+                    <Label htmlFor="no-profanity" className="text-sm font-normal text-gray-300">Avoid profanity</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Checkbox 
+                      id="stick-to-info" 
+                      className="border-white/30 data-[state=checked]:bg-primary"
+                      checked={guardrails.stickToInfo}
+                      onCheckedChange={() => handleGuardrailChange('stickToInfo')}
+                    />
+                    <Label htmlFor="stick-to-info" className="text-sm font-normal text-gray-300">Stick to provided information</Label>
+                  </div>
+                  <div className="flex items-center space-x-2">
+                    <Checkbox 
+                      id="polite-tone" 
+                      className="border-white/30 data-[state=checked]:bg-primary"
+                      checked={guardrails.politeTone}
+                      onCheckedChange={() => handleGuardrailChange('politeTone')}
+                    />
+                    <Label htmlFor="polite-tone" className="text-sm font-normal text-gray-300">Maintain a polite tone</Label>
+>>>>>>> origin/main
                   </div>
                 </div>
                 <Label htmlFor="strategyPrompt" className="text-sm text-gray-300">
@@ -1350,7 +1389,10 @@ export default function Dashboard() {
           </div>
         </main>
       </div>
+<<<<<<< HEAD
       <FloatingAIChatButton />
+=======
+>>>>>>> origin/main
     </div>
   );
 }
