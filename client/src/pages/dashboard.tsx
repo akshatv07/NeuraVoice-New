@@ -71,7 +71,8 @@ export default function Dashboard() {
   const [guardrails, setGuardrails] = useState({
     avoidProfanity: false,
     stickToInfo: false,
-    politeTone: false
+    politeTone: false,
+    slotFilling: false
   });
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -483,33 +484,42 @@ export default function Dashboard() {
                 Strategy & Behavior
               </Label>
               <div className="space-y-2">
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
-                  <div className="flex items-center space-x-2">
+                <div className="flex flex-wrap gap-6 mb-4">
+                  <div className="flex items-center space-x-2 flex-1 min-w-[200px]">
                     <Checkbox 
                       id="no-profanity" 
-                      className="border-white/30 data-[state=checked]:bg-primary" 
+                      className="border-white/30 data-[state=checked]:bg-primary flex-shrink-0" 
                       checked={guardrails.avoidProfanity}
                       onCheckedChange={() => handleGuardrailChange('avoidProfanity')}
                     />
-                    <Label htmlFor="no-profanity" className="text-sm font-normal text-gray-300">Avoid profanity</Label>
+                    <Label htmlFor="no-profanity" className="text-sm font-normal text-gray-300 whitespace-nowrap">Avoid profanity</Label>
                   </div>
-                  <div className="flex items-center space-x-2">
+                  <div className="flex items-center space-x-2 flex-1 min-w-[200px]">
                     <Checkbox 
                       id="stick-to-info" 
-                      className="border-white/30 data-[state=checked]:bg-primary"
+                      className="border-white/30 data-[state=checked]:bg-primary flex-shrink-0"
                       checked={guardrails.stickToInfo}
                       onCheckedChange={() => handleGuardrailChange('stickToInfo')}
                     />
-                    <Label htmlFor="stick-to-info" className="text-sm font-normal text-gray-300">Stick to provided information</Label>
+                    <Label htmlFor="stick-to-info" className="text-sm font-normal text-gray-300 whitespace-nowrap">Stick to provided info</Label>
                   </div>
-                  <div className="flex items-center space-x-2">
+                  <div className="flex items-center space-x-2 flex-1 min-w-[200px]">
                     <Checkbox 
                       id="polite-tone" 
-                      className="border-white/30 data-[state=checked]:bg-primary"
+                      className="border-white/30 data-[state=checked]:bg-primary flex-shrink-0"
                       checked={guardrails.politeTone}
                       onCheckedChange={() => handleGuardrailChange('politeTone')}
                     />
-                    <Label htmlFor="polite-tone" className="text-sm font-normal text-gray-300">Maintain a polite tone</Label>
+                    <Label htmlFor="polite-tone" className="text-sm font-normal text-gray-300 whitespace-nowrap">Maintain a polite tone</Label>
+                  </div>
+                  <div className="flex items-center space-x-2 flex-1 min-w-[200px]">
+                    <Checkbox 
+                      id="slot-filling" 
+                      className="border-white/30 data-[state=checked]:bg-primary flex-shrink-0"
+                      checked={guardrails.slotFilling}
+                      onCheckedChange={() => handleGuardrailChange('slotFilling')}
+                    />
+                    <Label htmlFor="slot-filling" className="text-sm font-normal text-gray-300 whitespace-nowrap">Slot Filling</Label>
                   </div>
                 </div>
                 <Label htmlFor="strategyPrompt" className="text-sm text-gray-300">
