@@ -717,8 +717,8 @@ export default function Landing() {
               },
               {
                 name: "Standard",
-                price: "₹3900",
-                period: "/month",
+                price: "₹3.9",
+                period: "/min",
                 description: "Start engaging. Start growing.",
                 buttonText: "Start Free Trial",
                 featured: true,
@@ -741,8 +741,8 @@ export default function Landing() {
               },
               {
                 name: "Premium",
-                price: "₹8000",
-                period: "/month",
+                price: "₹8.9",
+                period: "/min",
                 description: "Deploy at scale. Engage like never before.",
                 buttonText: "Start Free Trial",
                 featured: false,
