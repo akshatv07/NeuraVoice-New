@@ -244,7 +244,7 @@ export default function Landing() {
               size="lg"
             >
               <i className="fas fa-microphone mr-2"></i>
-              Talk to LenDen
+              Talk to LenDenClub
             </Button>
           </motion.div>
         </div>
@@ -697,13 +697,13 @@ export default function Landing() {
                 price: "₹0",
                 period: "/month",
                 description: "The beginning of your voice journey",
-                buttonText: "Get Started",
+                buttonText: "Start Free Trial",
                 featured: false,
                 features: [
                   { text: "300 Credits", available: true },
                   { text: "50 Voice Minutes", available: true },
                   { text: "1 Bot/Assistant", available: true },
-                  { text: "1 Concurrent Call", available: true },
+                  { text: "Single Channel: Dedicated Conversation", available: true },
                   { text: "Up to 15MB Knowledge Base", available: true },
                   { text: "No URL Scraping", available: false },
                   { text: "Community Support", available: true },
@@ -717,10 +717,10 @@ export default function Landing() {
               },
               {
                 name: "Standard",
-                price: "₹3.9",
+                price: "₹4",
                 period: "/min",
-                description: "Start engaging. Start growing.",
-                buttonText: "Start Free Trial",
+                description: "Start engaging, start growing",
+                buttonText: "Get Started",
                 featured: true,
                 features: [
                   { text: "3,000 Credits", available: true },
@@ -736,15 +736,15 @@ export default function Landing() {
                   { text: "Bot Retraining allowed (3)", available: true },
                   { text: "Hallucination Prevention", available: true },
                   { text: "Ethical Guardrails", available: true },
-                  { text: "SOC2 Compliance", available: false, comingSoon: true },
+                  { text: "SOC2 Compliance", available: true, comingSoon: true },
                 ]
               },
               {
                 name: "Premium",
-                price: "₹8.9",
+                price: "₹9",
                 period: "/min",
-                description: "Deploy at scale. Engage like never before.",
-                buttonText: "Start Free Trial",
+                description: "Deploy at scale, engage like never before.",
+                buttonText: "Get Started",
                 featured: false,
                 features: [
                   { text: "7,500 Credits", available: true },
@@ -759,14 +759,14 @@ export default function Landing() {
                   { text: "Bot Retraining allowed (10)", available: true },
                   { text: "Cross-domain Bot Retraining", available: true },
                   { text: "Enhanced Hallucination Prevention", available: true },
-                  { text: "SOC2 Compliance", available: false, comingSoon: true },
+                  { text: "SOC2 Compliance", available: true, comingSoon: true },
                 ]
               },
               {
                 name: "NeuraGrid",
                 price: "Custom",
                 period: "",
-                description: "Enterprise-grade. Always on.",
+                description: "Enterprise-grade, Always on",
                 buttonText: "Contact Sales",
                 featured: false,
                 features: [
@@ -818,12 +818,12 @@ export default function Landing() {
                     <div className="space-y-4 mb-8">
                       {plan.features.map((feature, i) => (
                         <div key={i} className="flex items-start">
-                          <div className={`flex-shrink-0 mt-1 mr-3 ${feature.available ? 'text-green-400' : 'text-gray-500'}`}>
+                          <div className={`flex-shrink-0 mt-1 mr-3 ${feature.available ? 'text-green-400' : 'text-[#ed5b51]'}`}>
                             <i className={`fas ${feature.available ? 'fa-check-circle' : 'fa-times-circle'}`}></i>
                           </div>
                           <div className="flex-1">
                             <div className="flex items-center">
-                              <span className={`text-sm ${feature.available ? 'text-gray-200' : 'text-gray-500 line-through'}`}>
+                              <span className={`text-sm ${feature.available ? 'text-gray-200' : 'text-gray-400'}`}>
                                 {feature.text}
                               </span>
                               {feature.comingSoon && (
