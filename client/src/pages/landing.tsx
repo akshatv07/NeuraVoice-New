@@ -153,6 +153,12 @@ export default function Landing() {
               >
                 About
               </button>
+              <button 
+                onClick={() => scrollToSection('pricing')} 
+                className="text-gray-300 hover:text-white transition-colors duration-300"
+              >
+                Pricing
+              </button>
             </div>
 
             {/* Right CTA */}
