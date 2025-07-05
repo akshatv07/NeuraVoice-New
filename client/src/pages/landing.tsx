@@ -131,31 +131,31 @@ export default function Landing() {
             <div className="hidden md:flex items-center gap-8">
               <button 
                 onClick={() => scrollToSection('use-cases')} 
-                className="text-gray-300 hover:text-white transition-colors duration-300"
+                className="text-gray-300 hover:text-blue-400 transition-colors duration-300"
               >
                 Workflow
               </button>
               <button 
                 onClick={() => scrollToSection('features')} 
-                className="text-gray-300 hover:text-white transition-colors duration-300"
+                className="text-gray-300 hover:text-blue-400 transition-colors duration-300"
               >
                 Features
               </button>
               <button 
                 onClick={() => scrollToSection('integrations')} 
-                className="text-gray-300 hover:text-white transition-colors duration-300"
+                className="text-gray-300 hover:text-blue-400 transition-colors duration-300"
               >
                 Integrations
               </button>
               <button 
                 onClick={() => scrollToSection('about')} 
-                className="text-gray-300 hover:text-white transition-colors duration-300"
+                className="text-gray-300 hover:text-blue-400 transition-colors duration-300"
               >
                 About
               </button>
               <button 
                 onClick={() => scrollToSection('pricing')} 
-                className="text-gray-300 hover:text-white transition-colors duration-300"
+                className="text-gray-300 hover:text-blue-400 transition-colors duration-300"
               >
                 Pricing
               </button>

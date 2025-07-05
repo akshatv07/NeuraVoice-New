@@ -700,8 +700,22 @@ export default function Dashboard() {
                   <div 
                     key={persona.id}
                     onClick={() => {
+                      // Toggle selection if clicking the currently selected persona
+                      const isCurrentlySelected = selectedPersona === persona.id;
+                      
+                      // If clicking the currently playing persona, deselect it
+                      if (isCurrentlySelected && currentAudio) {
+                        setSelectedPersona('');
+                        currentAudio.pause();
+                        currentAudio.currentTime = 0;
+                        setCurrentAudio(null);
+                        return;
+                      }
+                      
+                      // Otherwise, select the clicked persona
                       setSelectedPersona(persona.id);
 
+                      // Stop any currently playing audio
                       if (currentAudio) {
                         currentAudio.pause();
                         currentAudio.currentTime = 0;
@@ -721,6 +735,11 @@ export default function Dashboard() {
                         
                         audio.oncanplay = () => {
                           console.log('Audio can play');
+                        };
+                        
+                        audio.onended = () => {
+                          // Clear the current audio when it finishes playing
+                          setCurrentAudio(null);
                         };
                         
                         audio.play().catch(error => {
