@@ -162,12 +162,23 @@ export default function Landing() {
             </div>
 
             {/* Right CTA */}
-            <Button
-              onClick={isAuthenticated ? handleDashboard : handleLogin}
-              className="bg-gradient-to-r from-primary to-secondary hover:from-primary/80 hover:to-secondary/80 text-white font-medium transition-all duration-300 transform hover:scale-105"
-            >
-              {isAuthenticated ? 'Design Studio' : 'Sign In'}
-            </Button>
+            <div className="flex items-center gap-4">
+              <Button
+                onClick={isAuthenticated ? handleDashboard : handleLogin}
+                className="bg-gradient-to-r from-primary to-secondary hover:from-primary/80 hover:to-secondary/80 text-white font-medium transition-all duration-300 transform hover:scale-105"
+              >
+                {isAuthenticated ? 'Design Studio' : 'Sign In'}
+              </Button>
+              {!isAuthenticated && (
+                <Button
+                  variant="outline"
+                  onClick={() => setLocation("/auth?mode=signup")}
+                  className="border-white/20 text-white hover:bg-white/10 hover:text-white transition-all duration-300"
+                >
+                  Sign Up
+                </Button>
+              )}
+            </div>
           </nav>
         </div>
       </header>
@@ -384,14 +395,14 @@ export default function Landing() {
                 icon: "fas fa-globe",
                 title: "Multi-Language Support",
                 description: "Support for 5+ languages.",
-                gradient: "from-accent to-coral",
+                gradient: "from-primary to-accent",
                 comingSoon: true
               },
               {
                 icon: "fas fa-bolt",
                 title: "Near Real-Time Processing",
                 description: "Ultra-low latency for seamless, natural conversations",
-                gradient: "from-coral to-primary"
+                gradient: "from-primary to-accent"
               },
               {
                 icon: "fas fa-shield-alt",
