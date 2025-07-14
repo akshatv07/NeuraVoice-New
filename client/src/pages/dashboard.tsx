@@ -1,4 +1,5 @@
 import { useState, useRef } from "react";
+import { uploadFile, storeAssistantConfig } from "@/utils/api";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
@@ -78,6 +79,75 @@ export default function Dashboard() {
     politeTone: false,
     slotFilling: false
   });
+  const [uploadProgress, setUploadProgress] = useState<number>(0);
+  const [uploadError, setUploadError] = useState<string>("");
+
+  // Handle file upload
+  const handleFileUpload = async (file: File) => {
+    try {
+      setIsSubmitting(true);
+      setUploadProgress(0);
+      setUploadError("");
+      
+      // Upload file
+      const response = await uploadFile(file);
+      
+      // Handle successful upload
+      if (response.status === 200) {
+        setUploadProgress(100);
+        setSubmitSuccess(true);
+        setTimeout(() => {
+          setSubmitSuccess(false);
+        }, 3000);
+      }
+    } catch (error: any) {
+      setUploadError(error.message || "Failed to upload file");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
+
+  // Handle assistant creation
+  const createAssistant = async () => {
+    try {
+      setIsSubmitting(true);
+      
+      const config = {
+        name: botName,
+        provider: selectedProvider,
+        model: selectedModel,
+        persona: selectedPersona,
+        goal: selectedGoal,
+        domain: selectedDomain,
+        department: selectedDepartment,
+        strategyPrompt: strategyPrompt,
+        guardrails: {
+          avoidProfanity: guardrails.avoidProfanity,
+          stickToInfo: guardrails.stickToInfo,
+          politeTone: guardrails.politeTone,
+          slotFilling: guardrails.slotFilling
+        }
+      };
+
+      const response = await storeAssistantConfig(config);
+      
+      if (response.status === 200) {
+        setCreatedAssistant({
+          name: botName,
+          id: response.data.id
+        });
+        setShowCreateBot(false);
+        setSubmitSuccess(true);
+        setTimeout(() => {
+          setSubmitSuccess(false);
+        }, 3000);
+      }
+    } catch (error: any) {
+      setUploadError(error.message || "Failed to create assistant");
+    } finally {
+      setIsSubmitting(false);
+    }
+  };
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   const handleGuardrailChange = (key: keyof typeof guardrails) => {
@@ -142,10 +212,15 @@ export default function Dashboard() {
     }
   ];
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     if (event.target.files) {
       const files = Array.from(event.target.files);
       setSelectedFiles(prevFiles => [...prevFiles, ...files]);
+      
+      // Upload each file
+      for (const file of files) {
+        await handleFileUpload(file);
+      }
     }
   };
 
